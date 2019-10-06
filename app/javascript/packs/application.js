@@ -8,6 +8,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("stylesheets/application.scss")
+require("stylesheets/layout.scss")
 
 import "controllers"
 
