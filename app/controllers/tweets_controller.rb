@@ -48,9 +48,11 @@ class TweetsController < ApplicationController
       if @tweet.update(tweet_params)
         format.html { redirect_to @tweet, notice: 'Tweet was successfully updated.' }
         format.json { render :show, status: :ok, location: @tweet }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

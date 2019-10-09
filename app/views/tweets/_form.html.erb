@@ -1,4 +1,9 @@
-<%= form_with(model: tweet, html: { class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" }) do |form| %>
+<%= form_with(model: tweet, 
+              class: local_assigns[:class], 
+              data: { controller: "tweet-form", 
+                      target: "inline-edit.form", 
+                      action: "ajax:beforeSend->tweet-form#submit" }) do |form| %>
+
   <% if tweet.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
@@ -12,14 +17,20 @@
   <% end %>
 
 
-  <div class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
+  <div class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
     <%= form.label :body %>
-    <%= form.text_area :body, placeholder: "Tweet ya rebel scum" %>
+    <%= form.text_area :body, 
+                        placeholder: "Tweet ya rebel scum",
+                        data: { target: "tweet-form.body",
+                                action: "keyup->tweet-form#update" 
+                              } 
+                        
+                        %>
   </div>
 
   <div class="flex">
     <div class="w-1/2 bg-gray-200 h-12">
-      <span>0 Characters</span>
+      <span data-target="tweet-form.characterCount">0 Characters</span>
     </div>
     <div class="w-1/2 bg-gray-100 h-12 text-right"> 
       <%= form.submit class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>

@@ -7,17 +7,17 @@ export default class extends Controller {
   }
 
   hi() {
-    console.log(this.targets.find("name").value);
+    // console.log(this.targets.find("name").value);
   }
 
   log(event) {
-    console.log(this.nameElement.value);  
+    // console.log(this.nameElement.value);  
   }
 
   paste(event){
-    console.log(event);
+    // console.log(event);
     event.preventDefault();
-    console.log("pasting is not allowed");
+    // console.log("pasting is not allowed");
   }
 
   get name() {
