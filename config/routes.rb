@@ -6,7 +6,14 @@ Rails.application.routes.draw do
     get 'signup', to: 'devise/registrations#new'
   end
 
+  
   devise_for :users, :controllers => {:registrations => "registrations"}
+  
+  resources :users, only: [:index, :show] do
+    member do
+      post :follow
+    end
+  end
 
   resources :events
   

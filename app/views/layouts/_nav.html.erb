@@ -9,7 +9,7 @@
     </button>
   </div>
   <% if user_signed_in? %>
-
+    <strong><%= current_user.id %></stron>
   <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div class="text-sm lg:flex-grow">
 		<%= current_user.full_name %>

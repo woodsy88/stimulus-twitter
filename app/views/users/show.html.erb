@@ -1,0 +1,4 @@
+<%= @user.first_name %>
+<strong><%= @user.id %></strong>
+
+<%= link_to 'Follow User', follow_user_path(@user), method: :post %>
