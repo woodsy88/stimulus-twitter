@@ -1,9 +1,14 @@
 <div class="container mx-auto px-5">
   
   <%= render 'form', tweet: @tweet %>
-
-  <div id="tweets"><%= render @tweets %></div>
   
+  <div id="tweets" class="mb-8">
+   <% @tweets.each do |tweet| %>
+     <%= render partial: "tweets/#{tweet.tweet_type}", locals: {tweet: tweet} %>
+   <% end %>
+  </div>
+
+
   <%= link_to 'New Tweet', new_tweet_path %>
 
 </div> 

@@ -16,6 +16,9 @@ class User < ApplicationRecord
   # returns an ARRAY OF other USERS who the user has followed
   has_many :followings, through: :given_follows, source: :followed_user_id
 
+
+  has_many :tweets
+
 def full_name
   self.first_name + " " + self.last_name
 end

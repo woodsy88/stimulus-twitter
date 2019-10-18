@@ -1,0 +1,6 @@
+<div class="bg-green-300 max-w-sm rounded overflow-hidden shadow-lg">
+  <div>Retweeted by <%= tweet.user.full_name %></div>
+  <div>Posted by <%=  tweet.tweet.user.full_name %></div>
+  <p><%= tweet.tweet.body %></p>
+  <%= link_to 'Retweet', retweet_tweet_path(tweet.tweet), method: :post if user_signed_in? && tweet.user_id != current_user.id %>
+</div>

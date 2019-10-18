@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_10_160217) do
+ActiveRecord::Schema.define(version: 2019_10_18_185331) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_10_10_160217) do
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "tweet_id"
     t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 

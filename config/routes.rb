@@ -17,6 +17,10 @@ Rails.application.routes.draw do
 
   resources :events
   
-  resources :tweets
+  resources :tweets do
+    member do
+      post :retweet
+    end
+  end
   root to: "tweets#index"
 end

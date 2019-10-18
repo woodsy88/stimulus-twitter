@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_tweet, only: [:show, :edit, :update, :destroy]
+  before_action :set_tweet, only: [:show, :edit, :update, :destroy, :retweet]
 
   # GET /tweets
   # GET /tweets.json
@@ -23,6 +23,15 @@ class TweetsController < ApplicationController
   def edit
   end
 
+  def retweet
+    tweet = current_user.tweets.create(tweet_id: @tweet.id)
+    if tweet.save
+      redirect_to tweets_path
+    else
+      redirect_to :back, alert: "Unable to retweet"
+    end
+  end
+
   # POST /tweets
   # POST /tweets.json
   def create
@@ -30,7 +39,7 @@ class TweetsController < ApplicationController
     @tweet.user = current_user
     respond_to do |format|
       if @tweet.save
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
+        format.html { redirect_to tweets_path, notice: 'Tweet was successfully created.' }
         format.json { render :show, status: :created, location: @tweet }
         format.js
       else
